@@ -34,7 +34,7 @@ class Pflotran(AutotoolsPackage):
     homepage = "http://www.pflotran.org"
     git      = "https://bitbucket.org/pflotran/pflotran.git"
 
-    version('develop')
+    version('develop', branch='glenn/petsc-master-3.10.x-fixes')
     version('xsdk-0.2.0', tag='master')
     version('xsdk-0.3.0', branch='release/xsdk-0.3.0')
 
