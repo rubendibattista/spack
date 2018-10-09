@@ -110,6 +110,12 @@ class Xsdk(Package):
 
     depends_on('slepc@develop', when='@develop')
     depends_on('slepc@3.10.0', when='@0.4.0')
+    
+    # the Fortran 2003 bindings of phist require python@3:, but this
+    # creates a conflict with other packages like petsc@develop. Actually
+    # these are type='build' dependencies, but spack reports a conflict anyway.
+    # This will be fixed once the new concretizer becomes available (says @adamjsteward)
+    depends_on('phist@develop kernel_lib=tpetra ~fortran', when='@develop')
 
     # xSDKTrilinos depends on the version of Trilinos built with
     # +tpetra which is turned off for faster xSDK
