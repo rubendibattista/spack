@@ -34,6 +34,7 @@ class Amrex(CMakePackage):
     git      = "https://github.com/AMReX-Codes/amrex.git"
 
     version('develop', branch='development')
+    version('18.09.1', tag='18.09.1')
 
     # Config options
     variant('dimensions', default='3',
