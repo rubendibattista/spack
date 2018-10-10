@@ -110,7 +110,7 @@ class Phist(CMakePackage):
         outlev = spec.variants['outlev'].value
 
         lapacke_libs = \
-            (spec['lapack:c'].libs + spec['blas:c'].libs).joined(';')
+            (spec['lapack:c'].libs + spec['blas:c'].libs + find_system_libraries(['libm'])).joined(';')
         lapacke_include_dir = spec['lapack:c'].headers.directories[0]
 
         args = ['-DPHIST_KERNEL_LIB=%s' % kernel_lib,
