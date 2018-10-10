@@ -61,9 +61,12 @@ class SuperluDist(CMakePackage):
 
     def cmake_args(self):
         spec = self.spec
+        lapack_blas = spec['lapack'].libs + spec['blas'].libs
         args = [
             '-DCMAKE_C_COMPILER=%s' % spec['mpi'].mpicc,
             '-DCMAKE_CXX_COMPILER=%s' % spec['mpi'].mpicxx,
+            '-DCMAKE_INSTALL_LIBDIR:STRING=%s' % self.prefix.lib,
+            '-DTPL_BLAS_LIBRARIES=%s' % lapack_blas.ld_flags,
             '-DTPL_PARMETIS_LIBRARIES=%s' % spec['parmetis'].libs.ld_flags +
             ';' + spec['metis'].libs.ld_flags,
             '-DTPL_PARMETIS_INCLUDE_DIRS=%s' % spec['parmetis'].prefix.include
