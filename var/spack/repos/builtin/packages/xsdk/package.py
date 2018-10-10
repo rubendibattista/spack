@@ -118,7 +118,10 @@ class Xsdk(Package):
     # creates a conflict with other packages like petsc@develop. Actually
     # these are type='build' dependencies, but spack reports a conflict anyway.
     # This will be fixed once the new concretizer becomes available (says @adamjsteward)
-    depends_on('phist@develop kernel_lib=tpetra ~fortran', when='@develop')
+    depends_on('phist@develop kernel_lib=tpetra ~fortran', when='@develop %intel')
+    depends_on('phist@develop kernel_lib=tpetra ~fortran', when='@develop %gcc')
+    depends_on('phist@1.7.2 kernel_lib=tpetra ~fortran', when='@0.4.0 %intel')
+    depends_on('phist@1.7.2 kernel_lib=tpetra ~fortran', when='@0.4.0 %gcc')
 
     # xSDKTrilinos depends on the version of Trilinos built with
     # +tpetra which is turned off for faster xSDK
