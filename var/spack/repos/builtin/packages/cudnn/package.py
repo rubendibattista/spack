@@ -12,6 +12,8 @@ class Cudnn(Package):
 
     homepage = "https://developer.nvidia.com/cudnn"
 
+    version('7.4.2', 'd3e504c7ffa53b454bacc3840ea326f7',
+            url='http://developer.download.nvidia.com/compute/redist/cudnn/v7.4.2/cudnn-10.0-linux-x64-v7.4.2.24.tgz')
     version('7.3', '72666d3532850752612706601258a0b2',
             url='http://developer.download.nvidia.com/compute/redist/cudnn/v7.3.0/cudnn-9.0-linux-x64-v7.3.0.29.tgz')
     version('6.0', 'a08ca487f88774e39eb6b0ef6507451d',
