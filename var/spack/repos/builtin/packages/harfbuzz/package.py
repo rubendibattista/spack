@@ -9,8 +9,10 @@ from spack import *
 class Harfbuzz(AutotoolsPackage):
     """The Harfbuzz package contains an OpenType text shaping engine."""
     homepage = "http://www.freedesktop.org/wiki/Software/HarfBuzz/"
-    url      = "http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.37.tar.bz2"
+    url = "https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.6.4.tar.xz"
 
+    version('2.6.4', sha256='9413b8d96132d699687ef914ebb8c50440efc87b3f775d25856d7ec347c03c12')
+    version('2.5.3', sha256='fed00dc797b7ba3ca943225f0a854baaed4c1640fff8a31d455cd3b5caec855c')
     version('2.3.1', sha256='f205699d5b91374008d6f8e36c59e419ae2d9a7bb8c5d9f34041b9a5abcae468')
     version('2.1.3', sha256='613264460bb6814c3894e3953225c5357402915853a652d40b4230ce5faf0bee')
     version('1.9.0', sha256='11eca62bf0ac549b8d6be55f4e130946399939cdfe7a562fdaee711190248b00')
@@ -23,6 +25,14 @@ class Harfbuzz(AutotoolsPackage):
     depends_on("freetype")
     depends_on("cairo")
     depends_on("zlib")
+
+    def url_for_version(self, version):
+        _urlfmt = "https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-{0}.tar.{1}"
+
+        if version < Version("2.4.0"):
+            return _urlfmt.format(version, "bz2")
+        else:
+            return _urlfmt.format(version, "xz")
 
     def configure_args(self):
         args = []
