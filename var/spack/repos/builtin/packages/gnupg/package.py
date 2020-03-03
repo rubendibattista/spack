@@ -13,6 +13,8 @@ class Gnupg(AutotoolsPackage):
     homepage = "https://gnupg.org/index.html"
     url = "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.3.tar.bz2"
 
+    version('2.2.19', sha256='242554c0e06f3a83c420b052f750b65ead711cc3fddddb5e7274fcdbb4e9dec0')
+    version('2.2.17', sha256='afa262868e39b651a2db4c071fba90415154243e83a830ca00516f9a807fd514')
     version('2.2.15', sha256='cb8ce298d7b36558ffc48aec961b14c830ff1783eef7a623411188b5e0f5d454')
     version('2.2.3', '6911c0127e4231ce52d60f26029dba68')
     version('2.1.21', '685ebf4c3a7134ba0209c96b18b2f064')
